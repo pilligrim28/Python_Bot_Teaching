@@ -12,7 +12,7 @@ dp = Dispatcher()
 
 @dp.message(CommandStart()) #ждет комнады старт handler
 async def cmd_start(message: Message):
-    await message.answer(f'Привет, \nтвой ID: {message.from_user.id}\nИмя: {message.from_user.full_name}')
+    await message.reply(f'Привет, \nтвой ID: {message.from_user.id}\nИмя: {message.from_user.first_name}')
 
 @dp.message(Command('help')) #ждет комнады help handler
 async def get_help(message: Message):
