@@ -18,7 +18,7 @@ async def cmd_start(message: Message):
 async def get_help(message: Message):
     await message.answer('Это команда /help')
 
-@dp.message(F.text == 'Как дела?') #Вопрос ответ
+@dp.message(F.text == 'Как дела?') #Вопрос-ответ
 async def how_are_you(message: Message):
     await message.answer('Ok!')
 
