@@ -1,4 +1,5 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import (ReplyKeyboardMarkup, KeyboardButton,
+                           InlineKeyboardMarkup, InlineKeyboardButton)
 
 
 main = ReplyKeyboardMarkup(keyboard=[
@@ -7,3 +8,6 @@ main = ReplyKeyboardMarkup(keyboard=[
 ],
                           resize_keyboard=True, #меняеться до минимального размера
                           input_field_placeholder='Выберите пункт меню')
+
+settings = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Youtube', url='https://youtube.com')]
+])
