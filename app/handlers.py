@@ -1,6 +1,6 @@
 from aiogram import F, Router
 from aiogram.filters import CommandStart, Command
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 
 import app.keyboards as kb
 
@@ -10,7 +10,7 @@ router=Router()
 @router.message(CommandStart()) #ждет комнады старт handler
 async def cmd_start(message: Message):
     await message.reply(f'Привет, \nтвой ID: {message.from_user.id}\nИмя: {message.from_user.first_name}',
-                       reply_markup=await kb.inline_cars())
+                       reply_markup = kb.main)
 
 @router.message(Command('help')) #ждет комнады help handler
 async def get_help(message: Message):
@@ -28,3 +28,7 @@ async def get_photo(message: Message):
 async def get_photo(message: Message):
     await message.answer_photo(photo='AgACAgIAAxkBAAMYZsdJ1QvTu_uavkLRFsfFKuG4rkUAAojhMRtHPTlK_Cvcw8CkTSIBAAMCAANtAAM1BA', caption = 'Это запрос Json')
 
+@router.callback_query(F.data =='catalog')
+async def catalog(callback: CallbackQuery):
+    await callback.answer('Вы нажали на каатлог')
+    await callback.message.edit_text('Привет!', reply_markup= await kb.inline_cars())
